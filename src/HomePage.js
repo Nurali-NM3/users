@@ -1,13 +1,14 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import Modal from "./FolderModal/Modal";
+import Modal from "./Component/FolderModal/Modal";
 
 
 function HomePage() {
     const [userList,setUserList] = useState([])
     const [showModel,setShowModel] = useState(false)
     const [editUser,setEditUser] = useState({})
+    const [clear,setClear] =useState('')
     useEffect(() =>{
         axios('https://64363d318205915d34eec114.mockapi.io/users')
             .then(res => setUserList(res.data))
@@ -30,6 +31,7 @@ function HomePage() {
     const handleEdit = (id) =>{
         setShowModel(true)
         setEditUser(userList.find(user => user.id ===id))
+        setClear('')
     }
     const handleDelete =(id) =>{
         axios.delete(`https://64363d318205915d34eec114.mockapi.io/users/${id}`)
@@ -40,6 +42,10 @@ function HomePage() {
 
     const handleComplete =(id,e)=>{
         setUserList(userList.map((user) => user.id === id? {...user, hire : e.target.checked} : user ))
+    }
+    const handleClear =()=>{
+        setShowModel(false)
+        setEditUser('')
     }
 
 return (
@@ -91,6 +97,7 @@ return (
                 onSubmit={handleAddUser}
                 setShowModal={setShowModel}
                 editUser={editUser}
+                handleClear={handleClear}
                 handleComplete={handleComplete}/>
         }
     </div>

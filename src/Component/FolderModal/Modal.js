@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './Modal.css'
 import Input from "./Input";
 
-const Modal = ({setShowModal ,onSubmit,editUser,handleComplete}) =>{
+const Modal = ({setShowModal ,onSubmit,editUser,handleComplete,handleClear}) =>{
     const [user,serUser] = useState(editUser || {})
 
     const handleSubmit =(e)=>{
@@ -15,10 +15,10 @@ const Modal = ({setShowModal ,onSubmit,editUser,handleComplete}) =>{
     return(
         <div className={'modal'}>
             <div className={'modal-inner'}>
-                <form action="" onSubmit={handleSubmit} >
+                <form action="src/Component/FolderModal" onSubmit={handleSubmit} >
                     <button
                     className={'btn'}
-                    onClick={() => setShowModal(false)}>
+                    onClick={handleClear}>
                         X
                     </button>
                     <div>
@@ -50,7 +50,7 @@ const Modal = ({setShowModal ,onSubmit,editUser,handleComplete}) =>{
                           <input
                               onChange={(e) =>handleComplete(user.id,e)}
                               type="checkbox"
-                              checked={user.hire}
+                              value={user.hire}
                               className={'checkbox'}
                               autoComplete={'off'}/>
                           <span className={'fake'}></span>

@@ -7,10 +7,10 @@ const Header = () =>{
         <div className={'header'}>
             <h3>logo</h3>
             <nav className={'nav'}>
-                <a href="src#">about us</a>
-                <a href="src#">about us</a>
-                <a href="src#">about us</a>
-                <a href="src#">about us</a>
+                <a href="src/index#">about us</a>
+                <a href="src/index#">about us</a>
+                <a href="src/index#">about us</a>
+                <a href="src/index#">about us</a>
             </nav>
             <div className="search">
                 <input type="text"/>
